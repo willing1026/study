@@ -1,0 +1,8 @@
+cloud:
+  aws:
+    region:
+      static: ap-northeast-2
+    s3:
+      bucket: js-image-bucket
+    stack:
+      auto: false
