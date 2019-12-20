@@ -17,4 +17,8 @@ interface lec07.InvalidFunctionalInterface {
 }
 ```
 
-- 다음번 17:45 부터
+- lombok 사용을 통해 생성자, getter, setter 등을 annotation 으로 대체 가능
+    - 코드에서 필요한 부분에 집중할 수 있어.
+    - @Data annotation
+    
+47:54
