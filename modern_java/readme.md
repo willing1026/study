@@ -31,3 +31,5 @@ interface lec07.InvalidFunctionalInterface {
 
 - identity function 
     - method내부에서 null인 경우 그대로 반환해야 하는 경우 사용 가능. (정확히 이해 못함)
+    
+#### 모던 자바 (자바8) 못다한 이야기 - 08 Stream API - 03 Stream API 01 - 무한 collection
