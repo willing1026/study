@@ -21,10 +21,13 @@ interface lec07.InvalidFunctionalInterface {
     - 코드에서 필요한 부분에 집중할 수 있어.
     - @Data annotation
     
-    
-    
 #### 모던 자바 (자바8) 못다한 이야기 - 08 Stream API - 01 시작하기전에
 
 - function
     - input이 달라도 같은 output값을 같는 건 가능
     - 하지만 input은 같은데 output값이 다른건 안된다
+
+#### 모던 자바 (자바8) 못다한 이야기 - 08 Stream API - 02 Identity Function
+
+- identity function 
+    - method내부에서 null인 경우 그대로 반환해야 하는 경우 사용 가능. (정확히 이해 못함)
