@@ -33,3 +33,9 @@ interface lec07.InvalidFunctionalInterface {
     - method내부에서 null인 경우 그대로 반환해야 하는 경우 사용 가능. (정확히 이해 못함)
     
 #### 모던 자바 (자바8) 못다한 이야기 - 08 Stream API - 03 Stream API 01 - 무한 collection
+
+#### 모던 자바 (자바8) 못다한 이야기 - 08 Stream API - 03 Stream API 02 - Stream vs 예전방식
+- 필요한 조건들에 맞는 값을 방식을 이전방식과 stream을 사용한 방식을 비교
+- 속도, 성능면에서 문제는 없을까? 효율적으로 처리.
+- Stream : 게으른 collection Builder
+(30:49)
