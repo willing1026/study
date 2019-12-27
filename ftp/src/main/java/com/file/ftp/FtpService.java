@@ -72,9 +72,9 @@ public class FtpService {
 
             if (inputStream != null) {
                 inputStream.close();
+                ftpClient.completePendingCommand();
             }
 
-            ftpClient.completePendingCommand();
         }
 
         return true;
