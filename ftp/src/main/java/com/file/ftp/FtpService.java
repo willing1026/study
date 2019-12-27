@@ -3,7 +3,6 @@ package com.file.ftp;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPFile;
-import org.apache.commons.net.ftp.FTPFileFilter;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
@@ -60,7 +59,7 @@ public class FtpService {
 
             byte[] byteArray = new byte[4096];
             int bytesRead = -1;
-            while((bytesRead = inputStream.read(byteArray)) != -1) {
+            while ((bytesRead = inputStream.read(byteArray)) != -1) {
                 fos.write(byteArray, 0, bytesRead);
             }
         } catch (IOException | NoSuchFieldException e) {
@@ -74,6 +73,8 @@ public class FtpService {
             if (inputStream != null) {
                 inputStream.close();
             }
+
+            ftpClient.completePendingCommand();
         }
 
         return true;
