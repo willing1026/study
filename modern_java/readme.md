@@ -38,4 +38,14 @@ interface lec07.InvalidFunctionalInterface {
 - 필요한 조건들에 맞는 값을 방식을 이전방식과 stream을 사용한 방식을 비교
 - 속도, 성능면에서 문제는 없을까? 효율적으로 처리.
 - Stream : 게으른 collection Builder
-(30:49)
+
+#### 모던 자바 (자바8) 못다한 이야기 - 08 Stream API - 03 Stream API 03 - 기초
+- Stream은 lazy evaluation.
+- auto boxing, unboxing
+    - Integer.valueOf() 를 사용해서 boxing  (new Integer(i) 아님)
+        - valueOf method를 보면 내부에서 Integer값을 Caching 하고, 그 값을 반환 (기본적으로 -128 ~ 127까지)
+    - `Integer.valueOf(127) == new Integer(127)` 은 true
+    - `Integer.valueOf(128) == new Integer(128)` 을 해보면 false 결과가 나옴. 
+    - `==` 이 아니라 `equals`로 값을 비교해야함.
+        - == : 동일한 객체인지 확인 (메모리 주소까지)
+        - equals : 값이 같은지 비교
