@@ -51,3 +51,5 @@ interface lec07.InvalidFunctionalInterface {
         - equals : 값이 같은지 비교
         
 #### 모던 자바 (자바8) 못다한 이야기 - 08 Stream API - 03 Stream API 03A - IDE 활용 팁
+
+#### 모던 자바 (자바8) 못다한 이야기 - 08 Stream API - 03 Stream API 04 - 좀더 실용적인 예
