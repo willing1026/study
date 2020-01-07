@@ -53,3 +53,5 @@ interface lec07.InvalidFunctionalInterface {
 #### 모던 자바 (자바8) 못다한 이야기 - 08 Stream API - 03 Stream API 03A - IDE 활용 팁
 
 #### 모던 자바 (자바8) 못다한 이야기 - 08 Stream API - 03 Stream API 04 - 좀더 실용적인 예
+
+#### 모던 자바 (자바8) 못다한 이야기 - 08 Stream API - 03 Stream API 05 - Parallel Programming (with ParallelStream)
