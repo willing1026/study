@@ -1,7 +1,7 @@
 package hello.jpa;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 public class Member {
@@ -10,19 +10,20 @@ public class Member {
     private Long id;
     private String name;
 
-    public Long getId() {
-        return id;
-    }
+    private Integer age;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @Enumerated(EnumType.STRING)
+    private RoleType roleType;
 
-    public String getName() {
-        return name;
-    }
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdDate;
 
-    public void setName(String name) {
-        this.name = name;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date lastModifiedDate;
+
+    @Lob
+    private String description;
+
+    public Member() {
     }
 }
