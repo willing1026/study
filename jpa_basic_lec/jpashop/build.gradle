@@ -1,0 +1,19 @@
+plugins {
+    id 'java'
+}
+
+group 'jpabook'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation("junit:junit:4.12")
+    implementation("org.hibernate:hibernate-entitymanager:5.3.15.Final")
+    //h2설치한 버전이랑 맞춰서 추가
+    implementation("com.h2database:h2:1.4.200")
+}

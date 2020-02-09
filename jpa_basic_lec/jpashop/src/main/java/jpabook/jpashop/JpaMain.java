@@ -1,4 +1,4 @@
-package hello.jpa;
+package jpabook.jpashop;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -14,18 +14,6 @@ public class JpaMain {
         tx.begin();
 
         try {
-            Member member1 = new Member();
-            member1.setName("C");
-
-            Member member2 = new Member();
-            member2.setName("B");
-
-            Member member3 = new Member();
-            member3.setName("A");
-
-            em.persist(member1);
-            em.persist(member2);
-            em.persist(member3);
             tx.commit();
         } catch (Exception e) {
             tx.rollback();

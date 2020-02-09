@@ -7,12 +7,14 @@ import java.util.Date;
 @SequenceGenerator(
         name = "member_seq_generator",
         sequenceName = "member_seq",
-        initialValue = 1, allocationSize = 1
+        initialValue = 1, allocationSize = 10
 )
 public class Member {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+        generator = "member_seq_generator"
+    )
     private Long id;
 
     private String name;
