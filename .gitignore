@@ -6,7 +6,7 @@
 **/lec_handout/
 **/.gradle/
 **/.idea/modules/*.main.iml
-
+**/spring-security/spring-security-basic
 
 ### Java ###
 # Compiled class file
