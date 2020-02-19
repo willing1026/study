@@ -1,4 +1,4 @@
-package com.security.practice;
+package com.security.practice.form;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
