@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -14,6 +15,9 @@ public class AccountService implements UserDetailsService {
 
     @Autowired
     private AccountRepository repository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     /**
      *
@@ -38,7 +42,7 @@ public class AccountService implements UserDetailsService {
     }
 
     public Account createAccount(Account account) {
-        account.encodePassword();
+        account.encodePassword(passwordEncoder);
         return repository.save(account);
     }
 }
