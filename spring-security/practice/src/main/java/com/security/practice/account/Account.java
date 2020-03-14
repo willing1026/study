@@ -1,7 +1,9 @@
 package com.security.practice.account;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.Column;
@@ -12,6 +14,7 @@ import javax.persistence.Id;
 @Getter
 @Setter
 @Entity
+@ToString
 public class Account {
 
     @Id
