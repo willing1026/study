@@ -25,7 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		//authorize - 인가.
 		http.authorizeRequests()
-				.mvcMatchers("/", "/info", "/account/**").permitAll()
+				.mvcMatchers("/", "/info", "/account/**", "/signup").permitAll()
 				.mvcMatchers("/admin").hasRole("ADMIN")
 				.mvcMatchers("/user").hasRole("USER")
 				.anyRequest().authenticated()
