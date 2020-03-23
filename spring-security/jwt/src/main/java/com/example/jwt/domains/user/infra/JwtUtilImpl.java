@@ -12,7 +12,7 @@ import java.util.Date;
 @Component
 public class JwtUtilImpl implements JwtUtil {
 	private static final String TEST_SIGN_KEY = "testKey";
-	private Date EXPIRED_TIME = new Date(System.currentTimeMillis() + 1_000 * 10);
+	private Date EXPIRED_TIME = new Date(System.currentTimeMillis() + 1_000 * 90);
 	private String ISSUER = "ADMIN";
 
 	@Override

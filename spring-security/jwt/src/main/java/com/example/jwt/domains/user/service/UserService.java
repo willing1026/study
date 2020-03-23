@@ -44,6 +44,8 @@ public class UserService {
 			throw new IllegalArgumentException("패스워드 불일치");
 		}
 
+		jwtUtil.verifyToken(findUser.getToken());
+
 		return SignInResponse.builder()
 				.token(findUser.getToken())
 				.build();
