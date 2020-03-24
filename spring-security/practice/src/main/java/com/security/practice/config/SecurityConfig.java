@@ -32,11 +32,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.accessDecisionManager(accessDecisionManager())
 //                .expressionHandler() // accessDecisionManager 말고 expressionHandler를 커스터마이징 가능
 		;
-		http.formLogin();
+
+		http.formLogin()
+			.loginPage("/login") // -> custom 로그인페이지를 사용하면 defaultLoginPageGeneratringFilter 가 포함 안된다.
+			.permitAll()
+		;
 		http.httpBasic();
+
+		http.logout().logoutSuccessUrl("/");
 
 		//현재 쓰레드에서 생성되는 하위 쓰레드에도 SpringSecurityContext를 공유.
 		SecurityContextHolder.setStrategyName(SecurityContextHolder.MODE_INHERITABLETHREADLOCAL);
+	}
+
+	@Override
+	public void configure(WebSecurity web) throws Exception {
+		//static resource 제외
+		//정적자원인 경우 ignore를 통해 제외시키는게 좋고, 동적 페이지의 경우
+		web.ignoring().requestMatchers(PathRequest.toStaticResources().atCommonLocations());
 	}
 
 	/**
@@ -57,13 +70,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		AccessDecisionManager accessDecisionManager = new AffirmativeBased(voters);
 		return accessDecisionManager;
 	}
-
-    @Override
-    public void configure(WebSecurity web) throws Exception {
-	    //static resource 제외
-        //정적자원인 경우 ignore를 통해 제외시키는게 좋고, 동적 페이지의 경우
-        web.ignoring().requestMatchers(PathRequest.toStaticResources().atCommonLocations());
-    }
 
     //    @Override
 //    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
