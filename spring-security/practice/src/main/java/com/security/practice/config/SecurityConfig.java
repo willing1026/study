@@ -1,10 +1,19 @@
 package com.security.practice.config;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.web.access.AccessDeniedHandler;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 @Configuration
 @EnableWebSecurity
@@ -19,6 +28,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated();
         http.formLogin();
         http.httpBasic();
+
+        http.exceptionHandling()
+//                .accessDeniedPage("/access-denied");
+                //뭔가 더 많은 처리를 하고 싶으면 "accessDeniedHandler" 로 처리
+                //별도 클래스로 분리하는게 좋다.
+            .accessDeniedHandler(new AccessDeniedHandler() {
+                @Override
+                public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException, ServletException {
+                    UserDetails principal = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+                    String username = principal.getUsername();
+                    System.out.println(username + "is denied to access " + request.getRequestURI() );
+                    response.sendRedirect("/access-denied");
+                }
+            });
+
     }
 
 //    @Override
