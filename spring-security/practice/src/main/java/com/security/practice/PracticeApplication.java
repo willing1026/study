@@ -3,6 +3,7 @@ package com.security.practice;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.DelegatingPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
@@ -14,6 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @SpringBootApplication
+@EnableAsync
 public class PracticeApplication {
 /**
  * document - https://docs.spring.io/spring-security/site/docs/current/reference/htmlsingle/

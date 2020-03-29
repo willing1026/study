@@ -2,13 +2,19 @@ package com.security.practice.form;
 
 import com.security.practice.account.AccountContext;
 import com.security.practice.account.AccountRepository;
+import com.security.practice.common.SecurityLogger;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.security.Principal;
+import java.util.concurrent.Callable;
 
+@Slf4j
 @Controller
 public class SampleController {
 
@@ -49,5 +55,31 @@ public class SampleController {
 	public String admin(Model model, Principal principal) {
 		model.addAttribute("message", "Hello Admin " + principal.getName());
 		return "admin";
+	}
+
+	@GetMapping("/user")
+	public String user(Model model, Principal principal) {
+		model.addAttribute("message", "Hello User " + principal.getName());
+		return "admin";
+	}
+
+	@GetMapping("/async-hanlder")
+	@ResponseBody
+	public Callable<String> asyncHanlder() {
+		SecurityLogger.log("MVC");
+
+		return () -> {
+				SecurityLogger.log("Callable");
+				return "Async Handler";
+		};
+	}
+
+	@GetMapping("/async-service")
+	@ResponseBody
+	public String asyncService() {
+		SecurityLogger.log("before async service");
+		sampleService.asyncService();
+		SecurityLogger.log("after async service");
+		return "Async Service";
 	}
 }
