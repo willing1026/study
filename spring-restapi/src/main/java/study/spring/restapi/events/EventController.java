@@ -1,10 +1,11 @@
 package study.spring.restapi.events;
 
 import org.modelmapper.ModelMapper;
-import org.modelmapper.internal.Errors;
+
 import org.springframework.hateoas.MediaTypes;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,10 +20,12 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 public class EventController {
 
 	private final EventRepository eventRepository;
+	private final EventValidator eventValidator;
 	private final ModelMapper modelMapper;
 
-	public EventController(EventRepository eventRepository, ModelMapper modelMapper) {
+	public EventController(EventRepository eventRepository, EventValidator eventValidator, ModelMapper modelMapper) {
 		this.eventRepository = eventRepository;
+		this.eventValidator = eventValidator;
 		this.modelMapper = modelMapper;
 	}
 
@@ -31,6 +34,12 @@ public class EventController {
 		if (errors.hasErrors()) {
 			return ResponseEntity.badRequest().build();
 		}
+
+		eventValidator.validate(eventDto, errors);
+		if (errors.hasErrors()) {
+			return ResponseEntity.badRequest().build();
+		}
+
 		Event event = modelMapper.map(eventDto, Event.class);
 		Event newEvent = eventRepository.save(event);
 		URI createdUri = linkTo(EventController.class).slash(newEvent.getId()).toUri();
