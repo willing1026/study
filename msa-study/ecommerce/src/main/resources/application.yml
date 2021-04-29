@@ -1,0 +1,12 @@
+server:
+  port: 8761
+
+spring:
+  application:
+    name: discoveryservice
+
+eureka:
+  # 자동으로 client setting 진행 -> 하위 값들은 default true이므로 false로 변경
+  client:
+    register-with-eureka: false
+    fetch-registry: false
