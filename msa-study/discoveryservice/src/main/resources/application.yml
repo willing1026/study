@@ -6,7 +6,7 @@ spring:
     name: discoveryservice
 
 eureka:
-  # 자동으로 client setting 진행 -> 하위 값들은 default true이므로 false로 변경
   client:
+    # 자동으로 true로 세팅되므로 false 세팅. 서버용도로 사용할 예정
     register-with-eureka: false
     fetch-registry: false
