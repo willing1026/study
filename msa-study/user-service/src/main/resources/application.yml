@@ -1,0 +1,16 @@
+# user-service port
+server:
+  port: 9001
+
+spring:
+  application:
+    name: user-service
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    # 서버의 위치를 지정하는 것
+    service-url:
+      # 여기에 마이크로서비스 정보를 등록하겠다. eureka discovery-server가 기동중이어야 함
+      defaultZone: http://127.0.0.1:8761/eureka
