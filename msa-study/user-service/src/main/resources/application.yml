@@ -1,6 +1,6 @@
 # user-service port
 server:
-  port: 9001
+  port: ${port:9001}
 
 spring:
   application:
