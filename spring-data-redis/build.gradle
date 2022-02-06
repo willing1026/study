@@ -24,6 +24,9 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // https://mvnrepository.com/artifact/org.redisson/redisson
+    implementation group: 'org.redisson', name: 'redisson', version: '3.16.8'
 }
 
 tasks.named('test') {
